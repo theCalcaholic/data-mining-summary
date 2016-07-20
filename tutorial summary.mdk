@@ -8,8 +8,14 @@ Logo          : False
 *n = sample Size; N = population size*
 
 - Mean (sample vs population)
+~ Equation {#mean-default}
+  x = \frac{1}{n}\sum_{i=1}^n x_i
+~
 	- weighted arithmetic mean: 
-
+~ Equation {#mean-default}
+  x = \frac{\sum_{i=1}^n {w_{i} x_{i}{\sum_{i=1}^n w_i}
+~
+  - trimmed mean: chop extreme values; calculate mean afterwards
 #Tutorial 1
 ##Different Data Types
 *Categories: nominal, ordinal*
