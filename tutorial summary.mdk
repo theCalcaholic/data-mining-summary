@@ -8,14 +8,24 @@ Logo          : False
 *n = sample Size; N = population size*
 
 - Mean (sample vs population)
-~ Equation {#mean-default}
-  x = \frac{1}{n}\sum_{i=1}^n x_i
-~
+  ~ Equation {#mean-default}
+    x = \frac{1}{n}\sum_{i=1}^n x_i
+  ~
 	- weighted arithmetic mean: 
-~ Equation {#mean-default}
-  x = \frac{\sum_{i=1}^n {w_{i} x_{i}{\sum_{i=1}^n w_i}
-~
+  ~ Equation {#mean-default}
+    x = \frac{\sum_{i=1}^n {w_{i} x_{i}{\sum_{i=1}^n w_i}
+  ~
   - trimmed mean: chop extreme values; calculate mean afterwards
+
+- Median
+  - Middle value (if odd number of values) or average of the middle two values (otherwise)
+- Mode
+  - Value that occurs most often in data
+  - unimodal, bimodal, trimodal are data sets with 1, 2, 3 modes
+  - empirical formula for moderately asymmetrical curves:
+  ~ Equation {#mod-asym-curves}
+      \[mean - mode = 3 \cdot (mean - median)\]
+  ~
 #Tutorial 1
 ##Different Data Types
 *Categories: nominal, ordinal*
