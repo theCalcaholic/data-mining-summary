@@ -1,0 +1,40 @@
+Title         : Data Mining Tutorial Summary
+Author        : Tobias Knöppler
+Logo          : False
+
+[TITLE]
+
+#Measurements
+*n = sample Size; N = population size*
+
+- Mean (sample vs population)
+	- weighted arithmetic mean: 
+
+#Tutorial 1
+##Different Data Types
+*Categories: nominal, ordinal*
+
+- nominal (kategorisierend):
+	- Haarfarbe, Marke
+- binary (entscheidend) - im Prinzip Subklasse von nominal:
+	- Geschlecht
+- ordinal (vergleichend):
+	- Alter, Geschwindigkeit, Preis
+- numeric
+	- Quantity
+	- Interval
+		- measured on a scale of units
+		- ordered
+	- Ratio
+		- inherent zero point
+
+*Question the data you get... Do not believe everything which has a nice graphic*
+##Different Visualization Techniques
+- pie chart
+- bar chart
+- x-y-diagram
+- ...
+
+#Tutorial 2
+
+##X²-Test
