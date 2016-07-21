@@ -1,6 +1,5 @@
 Title         : Data Mining Tutorial Summary
 Author        : Tobias Knöppler
-Logo          : False
 
 [TITLE]
 
@@ -59,3 +58,19 @@ Logo          : False
 #Tutorial 2
 
 ##X²-Test
+
+
+## correlation
+~ Equation
+  \[r_{A,B} = \frac{\sum_{i=1}^N (a_i - A_{exp})(b_i - B_{exp})}{N \cdot \teta_A \teta_B}\]
+~
+- $r_{A,B} > 0$: A and B are positively correlated (A increases as B). The higher $r_{A,B}$, the stronger the correlation.
+- $r_{A,B} = 0$: independent
+- $r_{A,B} < 0$: A and B are negatively correlated.
+## covariance
+~ Equation
+  \[r_{A,B} = \frac{Cov(A,B)}{\teta_A \cdot \teta_B}\]
+~
+- $Cov_{A, B} > 0$: A and B tend to be greater than expected (positive covariance)
+- $Cov_{A, B} = 0$: independent
+- $Cov_{A, B} < 0$: negative covariance
