@@ -15,6 +15,11 @@ Logo          : False
   ~ Equation {#mean-default}
     x = \frac{\sum_{i=1}^n {w_{i} x_{i}{\sum_{i=1}^n w_i}
   ~
+
+~ Equation {#mean-default}
+  x = \frac{\sum_{i=1}^n {w_{i} x_{i}{\sum_{i=1}^n w_i}
+~
+<!-- end merge -->
   - trimmed mean: chop extreme values; calculate mean afterwards
 
 - Median
