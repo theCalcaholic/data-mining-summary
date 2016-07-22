@@ -1,0 +1,101 @@
+Title         : Data Mining Tutorial Summary
+Author        : Tobias Knöppler
+
+[TITLE]
+
+#Measurements
+*n = sample Size; N = population size*
+
+- Mean (sample vs population)
+  ~ Equation {#mean-default}
+    x = \frac{1}{n}\sum_{i=1}^n x_i
+  ~
+	- weighted arithmetic mean: 
+  ~ Equation {#mean-default}
+    x = \frac{\sum_{i=1}^n {w_{i} x_{i}{\sum_{i=1}^n w_i}
+  ~
+  - trimmed mean: chop extreme values; calculate mean afterwards
+
+- Median
+  - Middle value (if odd number of values) or average of the middle two values (otherwise)
+- Mode
+  - Value that occurs most often in data
+  - unimodal, bimodal, trimodal are data sets with 1, 2, 3 modes
+  - empirical formula for moderately asymmetrical curves:
+  ~ Equation {#mod-asym-curves}
+      mean - mode = 3 \cdot (mean - median)
+  ~
+- Standard Deviation
+  - "Average Distance to Mean"
+  ~ Equation {#standard-deviation}
+    s = \sqrt{ \frac{\sum_{i=1}^n X_i - X_{mean}}{n - 1}}
+  ~
+- Variance
+  ~ Equation {#variance}
+    s = { \frac{\sum_{i=1}^n (X_i - X_{mean})^2}{n - 1}
+  ~
+#Tutorial 1
+##Different Data Types
+*Categories: nominal, ordinal*
+
+- nominal (kategorisierend):
+	- Haarfarbe, Marke
+- binary (entscheidend) - im Prinzip Subklasse von nominal:
+	- Geschlecht
+- ordinal (vergleichend):
+	- Alter, Geschwindigkeit, Preis
+- numeric
+	- Quantity
+	- Interval
+		- measured on a scale of units
+		- ordered
+	- Ratio
+		- inherent zero point
+
+*Question the data you get... Do not believe everything which has a nice graphic*
+##Different Visualization Techniques
+- pie chart
+- bar chart
+- x-y-diagram
+- ...
+
+#Tutorial 2
+
+##X²-Test
+ - Measurment to test for relevance of nominal data relations
+ - 
+
+## correlation
+~ Equation
+  r_{A,B} = \frac{\sum_{i=1}^N (a_i - A_{exp})(b_i - B_{exp})}{N \cdot \teta_A \teta_B}
+~
+- $r_{A,B} > 0$: A and B are positively correlated (A increases as B). The higher $r_{A,B}$, the stronger the correlation.
+- $r_{A,B} = 0$: independent
+- $r_{A,B} < 0$: A and B are negatively correlated.
+## covariance
+~ Equation
+  Cov(A,B) = { \frac{\sum_{i=1}^n (X_i - X_{mean})(X_i - Y_{mean})}{n - 1}
+  r_{A,B} = \frac{Cov(A,B)}{\teta_A \cdot \teta_B}
+~
+- $Cov_{A, B} > 0$: A and B tend to be greater than expected (positive covariance)
+- $Cov_{A, B} = 0$: independent
+- $Cov_{A, B} < 0$: negative covariance
+
+## Feature Selection vs Feature Extraction (reduction)
+### Feature Selection
+- Univariate methods
+  - mean / variance
+### Feature Extraction
+- Dimensionality Reduction
+  - Principal Component Analysis
+    1. Normalize (subtract mean)
+    2. Calculate Covariance Matrix ($M_{i,j} = Cov(X_i, X_j)$)
+    3. Calculate Eigenvectors, Eigenvalues (both normalized) for Cov Matrix
+    4. Sort Eigenvectors by Eigenvalues -> determines relevance
+    5. Create Feature Vector from most significant eigenvectors
+    6. Calculate FeatureVector.T X NormalizedData.T
+- Numerosity Reduction
+- Data Compression
+
+#### Eigenvectors
+- 
