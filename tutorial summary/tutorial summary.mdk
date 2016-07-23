@@ -62,7 +62,7 @@ Author        : Tobias Knöppler
 #Tutorial 2
 
 ##X²-Test
- - Measurment to test for relevance of nominal data relations
+ - Measurement to test for relevance of nominal data relations
  - 
 
 ## correlation
@@ -95,7 +95,69 @@ Author        : Tobias Knöppler
     5. Create Feature Vector from most significant eigenvectors
     6. Calculate FeatureVector.T X NormalizedData.T
 - Numerosity Reduction
+  - Sampling
 - Data Compression
 
 #### Eigenvectors
 - 
+
+# Tutorial 3
+## Evaluation of Classification Systems
+### K-fold cross validation
+  - divide data set in k partitions
+  - use k-1 partitions for training, 1 partition for testing
+  - rotate (use next k-1 part.s for training, next 1 part. for testing)
+### confusion matrix
+           Actual >|     Class 1     |     Class 2     |
+        Predicted V|-----------------|-----------------|
+           Class 1 |A: True Positive |B: False Positive|
+           Class 2 |C: False Negative|D: True Negative |
+                   |-----------------|-----------------|
+
+#### Evaluation Metrics:
+- Accuracy:
+  ~ Equation
+    A = \frac{A+D}{A+B+C+D}
+  ~
+- True positive rate:
+  ~ Equation
+    TPr = \frac{A}{A+C} = 1 - false negative rate
+  ~
+- False positive rate:
+  ~ Equation
+    FPr = \frac{B}{B+D} = 1 - true negative rate
+  ~
+- Sensitivity:
+  ~ Equation
+    SE = TPr
+  ~
+- Specificity
+  ~ Equation
+    SP = 1 - FPr = TNr
+  ~
+- Recall:
+  ~ Equation
+    R = \frac{A}{A+C}
+  ~
+- Precision:
+  ~ Equation
+    P = \frac{A}{A+B}
+  ~
+- F-Score:
+  ~ Equation
+    F = \frac{2 \cdot P \cdot R}{P + R}
+  ~
+### Cost Matrix
+       Cost Matrix |Actual |     Class 1     |     Class 2     |
+           --------|-------|-----------------|-----------------|
+         Predicted |C(1|2) |        +        |        -        |
+           Class 1 |   +   |A: True Positive |B: False Positive|
+           Class 2 |   -   |C: False Negative|D: True Negative |
+                   |-------|-----------------|-----------------|
+
+### Apriori Algorithm
+    1. Scan item set to create new candidate itemset of frequent items (k=1).
+    2. Generate candidate set of combinations of k+1 frequent items
+    3. Test the candidates for occurence in data set and prune if not present
+    4. k = k+1
+    5. Terminate, if no frequent or candidate set can be generated, else go to 2.
