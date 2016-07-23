@@ -108,11 +108,16 @@ Author        : Tobias Knöppler
   - use k-1 partitions for training, 1 partition for testing
   - rotate (use next k-1 part.s for training, next 1 part. for testing)
 ### confusion matrix
-           Actual >|     Class 1     |     Class 2     |
-        Predicted V|-----------------|-----------------|
-           Class 1 |A: True Positive |B: False Positive|
-           Class 2 |C: False Negative|D: True Negative |
-                   |-----------------|-----------------|
+
+|----------------------|-----------------|-----------------|
+|Actual $\rightarrow$  |Class 1          |Class 2         |
+|`___________`         |                 |                 |
+|Predicted $\downarrow$|                 |                 |
++:---------------------+:----------------+----------------:+
+|Class 1               |A: True Positive |B: False Positive|
+|----------------------|-----------------|-----------------|
+|Class 2               |C: False Negative|D: True Negative |
+|----------------------|-----------------|-----------------|
 
 #### Evaluation Metrics:
 - Accuracy:
@@ -148,12 +153,16 @@ Author        : Tobias Knöppler
     F = \frac{2 \cdot P \cdot R}{P + R}
   ~
 ### Cost Matrix
-       Cost Matrix |Actual |     Class 1     |     Class 2     |
-           --------|-------|-----------------|-----------------|
-         Predicted |C(1|2) |        +        |        -        |
-           Class 1 |   +   |A: True Positive |B: False Positive|
-           Class 2 |   -   |C: False Negative|D: True Negative |
-                   |-------|-----------------|-----------------|
+
+|----------------------|----------------------|-----------------|-----------------|
+|Cost Matrix           |Actual $\rightarrow$  |Class 1          |Class 2          |
++:---------------------+:--------------------:+:---------------:+:---------------:+
+|Predicted $\downarrow$|C(1\|2)               |+                |-                |
+|----------------------|----------------------|-----------------|-----------------|
+|Class 1               |+                     |A: True Positive |B: False Positive|
+|----------------------|----------------------|-----------------|-----------------|
+|Class 2               |-                     |C: False Negative|D: True Negative |
+|----------------------|----------------------|-----------------|-----------------|
 
 ## Apriori Algorithm
   1. Scan item set to create new candidate itemset of frequent items (k=1).
@@ -193,3 +202,37 @@ Author        : Tobias Knöppler
   ~ Equation
     Gain(A) = Info(D) - Info_A(D)
   ~ 
+## Neural Networks
+- Perceptron
+- MLP
+  - Backpropagation Algorithm
+    --> TODO
+- Meaning of Learning Rate
+- Validation
+  - Three set: Training, Validation, Test
+  - Cross-Validation: Swap around Training and Test sets
+- Early stopping
+- Weaknesses:
+  - Long training time
+  - require number of empirically determined parameters (network topology)
+  - challenging to interpret symbolic meaning behind weights and "hidden" topology
+  - Bad handling of missing data
+- Strengths:
+  - well suited for continuos valued inputs and outputs
+  - High tolerance to noisy data
+  - generalisation - classify untrained patterns
+  - successful on a wide array of real world data
+  - inherenctly parallel
+  - possible to extract rules from trained neural networks
+  - relationship to brain
+
+## Cluster Analysis
+- Cluster: Group of data objects
+  - similar (or related) to one another within the same group
+  - dissimilar (or unrelated) to the objects in other groups
+- Cluster analysis
+  - Determining clusters based on patterns in the data
+  - **unsupervised learning**
+- Typical applications:
+  - As *standalone tool* to get insight into data distribution
+  - As *preprocessing step* for other algorithms
