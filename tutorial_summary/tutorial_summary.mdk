@@ -12,7 +12,7 @@ Author        : Tobias Knöppler
   ~
 	- weighted arithmetic mean: 
   ~ Equation {#mean-default}
-    x = \frac{\sum_{i=1}^n {w_{i} x_{i}{\sum_{i=1}^n w_i}
+    x = \frac{\sum_{i=1}^n w_{i} x_{i}}{\sum_{i=1}^n w_i}
   ~
   - trimmed mean: chop extreme values; calculate mean afterwards
 
@@ -32,7 +32,7 @@ Author        : Tobias Knöppler
   ~
 - Variance
   ~ Equation {#variance}
-    s = { \frac{\sum_{i=1}^n (X_i - X_{mean})^2}{n - 1}
+    s = \frac{\sum_{i=1}^n (X_i - X_{mean})^2}{n - 1}
   ~
 #Tutorial 1
 ##Different Data Types
@@ -67,15 +67,15 @@ Author        : Tobias Knöppler
 
 ## correlation
 ~ Equation
-  r_{A,B} = \frac{\sum_{i=1}^N (a_i - A_{exp})(b_i - B_{exp})}{N \cdot \teta_A \teta_B}
+  r_{A,B} = \frac{\sum_{i=1}^N (a_i - A_{exp})(b_i - B_{exp})}{N \cdot \theta_A \theta_B}
 ~
 - $r_{A,B} > 0$: A and B are positively correlated (A increases as B). The higher $r_{A,B}$, the stronger the correlation.
 - $r_{A,B} = 0$: independent
 - $r_{A,B} < 0$: A and B are negatively correlated.
 ## covariance
 ~ Equation
-  Cov(A,B) = { \frac{\sum_{i=1}^n (X_i - X_{mean})(X_i - Y_{mean})}{n - 1}
-  r_{A,B} = \frac{Cov(A,B)}{\teta_A \cdot \teta_B}
+  Cov(A,B) = \frac{\sum_{i=1}^n (X_i - X_{mean})(X_i - Y_{mean})}{n - 1}
+  r_{A,B} = \frac{Cov(A,B)}{\theta_A \cdot \theta_B}
 ~
 - $Cov_{A, B} > 0$: A and B tend to be greater than expected (positive covariance)
 - $Cov_{A, B} = 0$: independent
