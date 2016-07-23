@@ -155,9 +155,41 @@ Author        : Tobias Knöppler
            Class 2 |   -   |C: False Negative|D: True Negative |
                    |-------|-----------------|-----------------|
 
-### Apriori Algorithm
-    1. Scan item set to create new candidate itemset of frequent items (k=1).
-    2. Generate candidate set of combinations of k+1 frequent items
-    3. Test the candidates for occurence in data set and prune if not present
-    4. k = k+1
-    5. Terminate, if no frequent or candidate set can be generated, else go to 2.
+## Apriori Algorithm
+  1. Scan item set to create new candidate itemset of frequent items (k=1).
+  2. Generate candidate set of combinations of k+1 frequent items
+  3. Test the candidates for occurence in data set and prune if not present
+  4. k = k+1
+  5. Terminate, if no frequent or candidate set can be generated, else go to 2.
+
+## Decision Trees
+- Nodes: Tests on attributes
+- Outgoing branches: corresponding to outcomes of tests at nodes (ergo: decisions)
+- yes = and; no = or
+- Leaves: classes
+
+### Tree generation
+1. construction
+  - at start all training samples are at the root
+  - recursively partition samples based on selected attributes
+2. pruning
+  - identify and remove branches that reflect noise or outliers
+
+### Selecting Attributes
+#### Entropy
+- Measure of uncertainty
+- Calculation: for a discrete random variable Y taking m distinct values {y1, ..., ym}
+~ Equation
+  H(Y) = -\sum_{i=1}^m p_i \cdot log(p_i) \text{ where } p_i = P(Y=y_i)
+~
+
+#### Information Gain
+- **Information** [*Info(D)*] == Entropy, where D = Data Set
+- Information still needed to classify D (after making decision based on Attribute A to split D into v partitions):
+  ~ Equation
+    Info_A(D) = \sum_{j=1}^{v} \frac{|D_j|}{|D|} \cdot Info(D_j)
+  ~
+- **Information gained** by branching on A:
+  ~ Equation
+    Gain(A) = Info(D) - Info_A(D)
+  ~ 
