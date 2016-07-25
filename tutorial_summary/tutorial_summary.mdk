@@ -236,3 +236,123 @@ Author        : Tobias Knöppler
 - Typical applications:
   - As *standalone tool* to get insight into data distribution
   - As *preprocessing step* for other algorithms
+
+### K-Means
+- Algorithm:
+
+  1. Determine number of clusters to find -> k
+  2. Place k cluster centres to random positions
+  3. assign data points to closest cluster center
+  4. move cluster centers to mean of data point positions assigned to this cluster:
+     $\left(\mu_j = \frac{1}{N_j} \sum_{i=1}^{N_j} x_i \text{ where } N_j = \text{number of points in cluster j}\right)$
+  5. until the assignments don't change
+
+### (Kohonen-)Self-Organizing-Feature-Map ((K)SOM) 
+- Algorithm
+
+     1. Grab input node $i$
+     2. find best fitting node BMU, $u$ (by euclidean distance to weight vecor)
+     3. Update node weight vectors $w_v$ to "pull them closer to input vector":
+     $w_v(t+1) = w_v(t) + \Theta (u, v, s) \cdot \alpha (s) (i - W_v(t)); ~ \Theta = \text{neighbourhood function}$
+     4. increase s and repeat from first step, while $s < \lambda$
+
+- Neighbourhood function ($\Theta$):
+  Determines either, *if* a node is a neighbour to the BMU
+  or the level of "neighourness".
+  Depending on this value the node will be updated.
+
+## Genetic Algorithms
+- Gene-Analogy:
+
+|----------|-----------------------------------|
+|Nature    |Algorithm                          |
++----------+-----------------------------------+
+|Chromosome|String                             |
+|----------|-----------------------------------|
+|Gene      |Elements or Features in the string |
+|----------|-----------------------------------|
+|Locus     |Position in the String             |
+|----------|-----------------------------------|
+|Allele    |Position Value from an alphabet    |
+|----------|-----------------------------------|
+|Genotype  |String Structure                   |
+|----------|-----------------------------------|
+|Phenotype |Set of characteristics (features)  |
+|----------|-----------------------------------|
+
+- Algorithm Phases:
+  1. Encoding schemata
+  2. Fitness Evaluation
+  3. Testing if stopping condition met. If yes -> Halt
+  4. Else, Parent Selection
+  5. Crossover Operators
+  6. Mutation operators
+  
+  -> Goto 2.
+
+- Encoding Schemata:
+  - cover all possible solutions
+  - allow only valid solutions (if possible)
+  - choose appropriate representation:
+    - Bit-string: decode integers or real numbers
+      - Problems: e.g. mutation changes values significantly
+        - workaround: Gray coding: two successive values differ by 1 bit
+      - Better direct representation of numbers
+      - Bit-string often fine
+  - Two meanings of representation:
+    - Mapping between phenotype and genotype space: de-/encoding
+    - Data structure used in genotype space
+  - Initialization: Mostly randomly
+  - Choose alphabet
+    -often binary
+- Fitness Function
+  - Requirement to adapt for (compare error function from neural networks)
+  - Basis for string selection
+  - Synonyms: **evaluation** or **objective function**
+  - Always problem-specific:
+    - *Example*
+      - Context: Minimize x²
+      - Phenotype: $x \in N$
+      - Genotype: $z$: binary representation of $x$
+      - Fitness Function: fitness $f(z)$ of genotype z is defined as 1 divided by square of its corresponding phenotype,
+       e.g.: $z = 0010 \rightarrow \text{phenotype: } x = 2 \rightarrow f(z) = \frac{1}{x^2} = 0.25$
+- Parent Selection
+  - Select individuals tp create new population (offspring)
+  - Mainly based on fitness
+  - often probabilistic
+    - sum over all probabilities is 1.0
+  - parent selection supports process of evolving better solutions over time
+- Crossover
+  - Synonym: Recombination
+  - Crossover applied with probability $p_c$, e.g. $p_c \in [0.5, 1.0]$ otherwise parents are copied
+  - Implementations:
+  
+  **n-Point Crossover:**
+  - Split parents at n points and recombine segments
+  - Positional bias:
+    - n-Point Crossover tends to keep together genes located close to each other
+    - One-Point can never keep together genes from opposite ends
+  - Uniform Crossover
+    - Swap genes based on vector of random values
+    - probability: e.g. 0.5 for each single value
+    - reverse probability vector for second child
+  - Beyond Crossover
+    - Arithmetic recombination
+- Variation: Mutation
+  - Always stochastic: random and unbiased changes
+  - Modes:
+    - Bitwise
+    - Random resetting 
+- Survivor Selection
+  - Similarly to parent selection
+  - Role: reduce *n* parents and *o* offsprings to *n* individuals that constitute the next generation
+    - Fitter individuals more likely to survive
+    - Weak individuals may also survive
+  - Selection often deterministic based on age and/or fitness
+- Stopping condition
+  - optimum value known?
+  - **Problem:** GA's are stochastic and may never fulfill that condition
+  - Other possible criteria:
+    - time
+    - Max number of iterations
+    - diversity of population too small
