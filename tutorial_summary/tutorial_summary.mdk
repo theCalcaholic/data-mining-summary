@@ -356,3 +356,33 @@ Author        : Tobias Knöppler
     - time
     - Max number of iterations
     - diversity of population too small
+
+## Fuzzy Logic
+### Fuzzy Sets
+- smooth boundaries
+- allows partial membership of sets
+- membership determined by membership function
+- different shapes, e.g. Triangular, Trapezoidal, Gaussian
+
+#### Set Relations of Fuzzy Sets
+- Fuzzy Equality: A = B
+  - all elements need to have identical membership values
+- Fuzzy Containment: $A \subseteq B$
+  - membership value for each element have to be less or equal the memebership values in the superset
+- Fuzzy Union: $A \cup B$
+  - every element has the maximum membership value from member(A) and member(B)
+- Fuzzy Intersection
+  - every element has the minimum membership value from member(A) and member(B)
+- Fuzzy Complement
+  - every element has membership (1 - membership_value)
+
+### Fuzzy Rules
+- input and output are determined by fuzzy sets
+
+### Defuzzyfication
+- determine absolut membership by:
+  - centroid of area
+  - bisector of area
+  - mom: mean of maximum
+  - som: smallest of maximum
+  - lom: largest of maximum
